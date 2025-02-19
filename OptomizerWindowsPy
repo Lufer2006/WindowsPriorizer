@@ -1,0 +1,92 @@
+import os
+import time
+import sys
+
+def animacion_progreso(mensaje):
+    for _ in range(3):
+        for punto in range(4):
+            sys.stdout.write(f"\r{mensaje}{'.' * punto}   ")
+            sys.stdout.flush()
+            time.sleep(0.5)
+    print("\n")
+
+def optimizar_windows(modo):
+    if modo == 1:
+        print("ADVERTENCIA: El modo 'Rendimiento Extremo' realizará optimizaciones agresivas.")
+        confirmacion = input("¿Estás seguro de que deseas continuar? Escribe 'YES' para confirmar: ")
+        if confirmacion.upper() == "YES":
+            print("Aplicando configuraciones de Rendimiento Extremo...")
+            animacion_progreso("Optimizando")
+            # Desactivar servicios innecesarios
+            os.system("sc config wuauserv start= disabled")
+            os.system("sc config SysMain start= disabled")
+            # Limpiar archivos temporales
+            os.system("del /q/f/s %TEMP%\\*")
+            # Preguntar por prioridad de programa
+            print("¿Deseas priorizar un programa/juego específico?")
+            respuesta = input("Escribe 'YES' para confirmar: ")
+            if respuesta.upper() == "YES":
+                ruta_programa = input("Introduce la ruta del programa (ejemplo: C:\\Program Files\\Ejemplo\\programa.exe): ")
+                print(f"Priorizando el programa en tiempo real: {ruta_programa}")
+                os.system(f"wmic process where name='{ruta_programa}' CALL setpriority 256")
+            print("Optimización extrema completada.")
+        else:
+            print("Operación cancelada.")
+    elif modo == 2:
+        print("Aplicando configuraciones de Rendimiento...")
+        animacion_progreso("Optimizando")
+        # Desactivar algunos servicios
+        os.system("sc config wuauserv start= demand")
+        # Limpiar archivos temporales
+        os.system("del /q/f/s %TEMP%\\*")
+        # Preguntar por prioridad de programa
+        print("¿Deseas priorizar un programa/juego específico?")
+        respuesta = input("Escribe 'YES' para confirmar: ")
+        if respuesta.upper() == "YES":
+            ruta_programa = input("Introduce la ruta del programa (ejemplo: C:\\Program Files\\Ejemplo\\programa.exe): ")
+            print(f"Priorizando el programa en alto: {ruta_programa}")
+            os.system(f"wmic process where name='{ruta_programa}' CALL setpriority 128")
+        print("Optimización de rendimiento completada.")
+    elif modo == 3:
+        print("Aplicando configuraciones de Estabilidad...")
+        print("Selecciona el tipo de estabilidad:")
+        print("1. Estabilidad en programas en primer plano")
+        print("2. Estabilidad en programas en segundo plano")
+        opcion = int(input("Introduce el número de la opción deseada: "))
+        if opcion == 1:
+            print("Optimizando estabilidad para programas en primer plano...")
+            os.system("powercfg /setactive SCHEME_BALANCED")
+        elif opcion == 2:
+            print("Optimizando estabilidad para programas en segundo plano...")
+            os.system("powercfg /setactive SCHEME_MIN")
+        else:
+            print("Opción no válida.")
+            return
+        animacion_progreso("Optimizando")
+        print("Optimización de estabilidad completada.")
+    elif modo == 4:
+        print("Aplicando configuraciones de Ahorro de batería...")
+        animacion_progreso("Optimizando")
+        # Activar plan de energía de ahorro
+        os.system("powercfg /setactive SCHEME_MAX")
+        print("Ahorro de batería completado. (No recomendado en PC de escritorio)")
+    else:
+        print("Modo no válido. Por favor, selecciona una opción válida.")
+
+def main():
+    print("¿Qué modo deseas aplicar?")
+    print("1. Rendimiento Extremo")
+    print("2. Rendimiento")
+    print("3. Estabilidad")
+    print("4. Ahorro de batería")
+    
+    try:
+        modo = int(input("Introduce el número del modo deseado: "))
+        optimizar_windows(modo)
+    except ValueError:
+        print("Entrada no válida. Por favor, introduce un número.")
+
+    print("\nScript hecho por luferalai")
+
+if __name__ == "__ main():
+    main()
