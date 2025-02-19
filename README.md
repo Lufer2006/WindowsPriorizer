@@ -24,7 +24,7 @@ Ajusta el plan de energía a equilibrado o mínimo según la opción seleccionad
 Activa el plan de energía de ahorro máximo para reducir el consumo de energía, lo cual es útil en laptops.
 
 # Recomendaciones de Python
-Versión Recomendada: Es recomendable usar Python 3.6 o superior para ejecutar este script. Las versiones más recientes de Python incluyen mejoras de rendimiento y seguridad, así como nuevas características del lenguaje.
+Versión Recomendada: Es recomendable usar Python 3.6 o superior para ejecutar este script.
 
 # Instalación de Python
 Descargar Python:
