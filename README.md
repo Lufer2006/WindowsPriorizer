@@ -1,7 +1,7 @@
 # WindowsPriorizer
 
 Descripción del Script
-El script que te proporcioné es un optimizador de Windows que realiza cambios en el sistema operativo según el modo seleccionado por el usuario. Aquí te explico qué hace cada modo:
+El script es un optimizador de Windows que realiza cambios en el sistema operativo según el modo seleccionado por el usuario. Aquí te explico qué hace cada modo:
 
 • Rendimiento Extremo:
 
